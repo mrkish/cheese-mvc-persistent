@@ -9,24 +9,22 @@
 <nav th:replace="fragments :: navigation"></nav>
 <h1><span>Edit Cheese:</span>
     <span th:text="${cheese.name}">name</span>
-    <span>(id=</span><span th:text="${cheese.id}"></span>
-    <span>)</span>
 </h1>
 
 <form method="post" style="max-width:600px;" action="/cheese/edit" th:object="${cheese}">
     <div class="form-group">
         <label th:for="name">Name</label>
-        <input class="form-control" th:field="*{name}"/>
+        <input class="form-control" th:value="*{name}" name="name"/>
         <span th:errors="*{name}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="description">Description</label>
-        <input class="form-control" th:field="*{description}"/>
+        <input class="form-control" th:value="*{description}" name="description"/>
         <span th:errors="*{description}" class="error"></span>
     </div>
     <div class="form=group">
         <label th:for="type">Type</label>
-        <select th:field="*{category}">
+        <select name="categoryId">
             <option th:each="category : ${categories}"
                     th:text="${category.name}"
                     th:value="${category.id}"
@@ -34,7 +32,7 @@
             </option>
         </select>
     </div>
-    <input type="hidden" th:value="*{id}" name="id" />
+    <input type="hidden" th:value="${id}" name="id" />
     <input type="submit" value="Edit Cheese" />
 </form>
 

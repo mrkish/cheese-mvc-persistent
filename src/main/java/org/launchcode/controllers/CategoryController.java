@@ -19,6 +19,7 @@ public class CategoryController {
 
     @RequestMapping(value= "")
     public String index(Model model) {
+
         model.addAttribute("categories", categoryDao.findAll());
         model.addAttribute("title", "Categories");
 
@@ -43,6 +44,7 @@ public class CategoryController {
         }
 
         categoryDao.save(newCategory);
+
         return "redirect:";
     }
 
@@ -52,7 +54,7 @@ public class CategoryController {
         Category currentCategory = categoryDao.findOne(categoryId);
         model.addAttribute("category", currentCategory);
         model.addAttribute("title", "Category: " + currentCategory.getName());
+
         return "category/view";
     }
-
 }
