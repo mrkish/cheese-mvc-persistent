@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,5 +57,36 @@ public class UserController {
         userDao.save(user);
 
         return "redirect:cheese/";
+    }
+
+    @RequestMapping(value = "login", method = RequestMethod.GET)
+    public String displayUserLogin(Model model) {
+
+        model.addAttribute("title", "Login");
+
+        return "user/login";
+    }
+
+    @RequestMapping(value = "login", method = RequestMethod.POST)
+    public String processUserLogin(Model model, @ModelAttribute User user, Errors errors) {
+
+        if(errors.hasErrors()) {
+            model.addAttribute("title", "Login");
+
+            return "redirect:login";
+        }
+
+        // TODO: Add HTTPResponseServlet stuff here to set cookies/store a user session.
+
+        return "cheese/index";
+
+    }
+
+    @RequestMapping(value = "logout", method = RequestMethod.POST)
+    public String processUserLogout(Model model, @CookieValue User user) {
+
+        // TODO: Remove user cookies from session to handle logout functionality.
+
+        return "user/login";
     }
 }
