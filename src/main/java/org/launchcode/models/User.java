@@ -28,9 +28,9 @@ public class User {
     @JoinTable(name = "user_id")
     private List<Cheese> cheeses = new ArrayList<>();
 
-    @OneToMany
-    @JoinTable(name = "user_id")
-    private List<Menu> menus = new ArrayList<>();
+//    @OneToMany
+//    @JoinTable(name = "user_id")
+//    private List<Menu> menus = new ArrayList<>();
 
     public User(String username, String password) {
         this.username = username;
@@ -71,11 +71,11 @@ public class User {
         this.cheeses = cheeses;
     }
 
-    public List<Menu> getMenus() {
-        return menus;
-    }
+//    public List<Menu> getMenus() {
+//        return menus;
+//    }
 
-    public void setMenus(List<Menu> menus) {
-        this.menus = menus;
-    }
+//    public void setMenus(List<Menu> menus) {
+//        this.menus = menus;
+//    }
 }

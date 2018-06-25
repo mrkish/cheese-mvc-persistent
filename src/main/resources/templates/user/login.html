@@ -6,13 +6,18 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<form method="post" style="max-width:600px;" th:object="${menu}">
+<form action="/user/login" method="post" style="max-width:600px;" th:object="${user}">
     <div class="form-group">
         <label th:for="name">Name</label>
-        <input class="form-control" th:field="*{name}" />
-        <span th:errors="*{name}" class="error"></span>
+        <input class="form-control" th:value="*{username}" />
+        <span th:errors="*{username}" class="error"></span>
     </div>
-    <input type="submit" value="Create Menu" />
+    <div class="form-group">
+        <label th:for="password">Password</label>
+        <input type="password" class="form-control" th:value="*{password}" />
+        <span th:errors="*{password}" class="error"></span>
+    </div>
+    <input type="submit" value="Login" />
 </form>
 
 </body>

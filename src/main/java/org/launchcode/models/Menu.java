@@ -19,8 +19,8 @@ public class Menu {
     @ManyToMany
     private List<Cheese> cheeses;
 
-    @ManyToOne
-    private List<User> user;
+//    @ManyToOne
+//    private List<User> user;
 
     public Menu() {}
 
@@ -48,11 +48,11 @@ public class Menu {
         cheeses.add(item);
     }
 
-    public List<User> getUser() {
-        return user;
-    }
-
-    public void setUser(List<User> user) {
-        this.user = user;
-    }
+//    public List<User> getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(List<User> user) {
+//        this.user = user;
+//    }
 }

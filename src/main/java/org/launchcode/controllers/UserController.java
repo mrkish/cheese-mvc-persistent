@@ -32,6 +32,7 @@ public class UserController {
     public String login(Model model) {
 
         model.addAttribute("title", "Login");
+        model.addAttribute(new User());
 
         return "user/login";
     }
@@ -40,7 +41,7 @@ public class UserController {
     public String displayRegisterForm(Model model) {
 
         model.addAttribute("title", "Register New User");
-        model.addAttribute(new User());
+        model.addAttribute("user", new User());
 
         return "user/register";
     }
